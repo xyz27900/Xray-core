@@ -13,11 +13,11 @@ import (
 
 // HealthPingSettings holds settings for health Checker
 type HealthPingSettings struct {
-	Destination   string        `json:"destination"`
-	Connectivity  string        `json:"connectivity"`
-	Interval      time.Duration `json:"interval"`
-	SamplingCount int           `json:"sampling"`
-	Timeout       time.Duration `json:"timeout"`
+	Destination   string        `json:"destination,omitempty"`
+	Connectivity  string        `json:"connectivity,omitempty"`
+	Interval      time.Duration `json:"interval,omitempty"`
+	SamplingCount int           `json:"sampling,omitempty"`
+	Timeout       time.Duration `json:"timeout,omitempty"`
 }
 
 // HealthPing is the health checker for balancers

@@ -11,8 +11,8 @@ import (
 )
 
 type HTTPAccount struct {
-	Username string `json:"user"`
-	Password string `json:"pass"`
+	Username string `json:"user,omitempty"`
+	Password string `json:"pass,omitempty"`
 }
 
 func (v *HTTPAccount) Build() *http.Account {
@@ -23,10 +23,10 @@ func (v *HTTPAccount) Build() *http.Account {
 }
 
 type HTTPServerConfig struct {
-	Timeout     uint32         `json:"timeout"`
-	Accounts    []*HTTPAccount `json:"accounts"`
-	Transparent bool           `json:"allowTransparent"`
-	UserLevel   uint32         `json:"userLevel"`
+	Timeout     uint32         `json:"timeout,omitempty"`
+	Accounts    []*HTTPAccount `json:"accounts,omitempty"`
+	Transparent bool           `json:"allowTransparent,omitempty"`
+	UserLevel   uint32         `json:"userLevel,omitempty"`
 }
 
 func (c *HTTPServerConfig) Build() (proto.Message, error) {
@@ -47,14 +47,14 @@ func (c *HTTPServerConfig) Build() (proto.Message, error) {
 }
 
 type HTTPRemoteConfig struct {
-	Address *Address          `json:"address"`
-	Port    uint16            `json:"port"`
-	Users   []json.RawMessage `json:"users"`
+	Address *Address          `json:"address,omitempty"`
+	Port    uint16            `json:"port,omitempty"`
+	Users   []json.RawMessage `json:"users,omitempty"`
 }
 
 type HTTPClientConfig struct {
-	Servers []*HTTPRemoteConfig `json:"servers"`
-	Headers map[string]string   `json:"headers"`
+	Servers []*HTTPRemoteConfig `json:"servers,omitempty"`
+	Headers map[string]string   `json:"headers,omitempty"`
 }
 
 func (v *HTTPClientConfig) Build() (proto.Message, error) {

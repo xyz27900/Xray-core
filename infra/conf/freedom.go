@@ -13,24 +13,24 @@ import (
 )
 
 type FreedomConfig struct {
-	DomainStrategy string    `json:"domainStrategy"`
-	Timeout        *uint32   `json:"timeout"`
-	Redirect       string    `json:"redirect"`
-	UserLevel      uint32    `json:"userLevel"`
-	Fragment       *Fragment `json:"fragment"`
-	Noise          *Noise    `json:"noise"`
-	ProxyProtocol  uint32    `json:"proxyProtocol"`
+	DomainStrategy string    `json:"domainStrategy,omitempty"`
+	Timeout        *uint32   `json:"timeout,omitempty"`
+	Redirect       string    `json:"redirect,omitempty"`
+	UserLevel      uint32    `json:"userLevel,omitempty"`
+	Fragment       *Fragment `json:"fragment,omitempty"`
+	Noise          *Noise    `json:"noise,omitempty"`
+	ProxyProtocol  uint32    `json:"proxyProtocol,omitempty"`
 }
 
 type Fragment struct {
-	Packets  string `json:"packets"`
-	Length   string `json:"length"`
-	Interval string `json:"interval"`
+	Packets  string `json:"packets,omitempty"`
+	Length   string `json:"length,omitempty"`
+	Interval string `json:"interval,omitempty"`
 }
 
 type Noise struct {
-	Packet string `json:"packet"`
-	Delay  string `json:"delay"`
+	Packet string `json:"packet,omitempty"`
+	Delay  string `json:"delay,omitempty"`
 }
 
 // Build implements Buildable

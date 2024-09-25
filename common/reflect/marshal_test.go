@@ -42,10 +42,10 @@ func TestMashalAccount(t *testing.T) {
 
 func TestMashalStruct(t *testing.T) {
 	type Foo = struct {
-		N   int                             `json:"n"`
-		Np  *int                            `json:"np"`
-		S   string                          `json:"s"`
-		Arr *[]map[string]map[string]string `json:"arr"`
+		N   int                             `json:"n,omitempty"`
+		Np  *int                            `json:"np,omitempty"`
+		S   string                          `json:"s,omitempty"`
+		Arr *[]map[string]map[string]string `json:"arr,omitempty"`
 	}
 
 	n := 1

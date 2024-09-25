@@ -2,9 +2,9 @@ package conf
 
 import (
 	"google.golang.org/protobuf/proto"
-	
-	"github.com/xtls/xray-core/app/router"
+
 	"github.com/xtls/xray-core/app/observatory/burst"
+	"github.com/xtls/xray-core/app/router"
 	"github.com/xtls/xray-core/infra/conf/cfgcommon/duration"
 )
 
@@ -46,11 +46,11 @@ type strategyLeastLoadConfig struct {
 
 // healthCheckSettings holds settings for health Checker
 type healthCheckSettings struct {
-	Destination   string   `json:"destination"`
-	Connectivity  string   `json:"connectivity"`
-	Interval      duration.Duration `json:"interval"`
-	SamplingCount int      `json:"sampling"`
-	Timeout       duration.Duration `json:"timeout"`
+	Destination   string            `json:"destination,omitempty"`
+	Connectivity  string            `json:"connectivity,omitempty"`
+	Interval      duration.Duration `json:"interval,omitempty"`
+	SamplingCount int               `json:"sampling,omitempty"`
+	Timeout       duration.Duration `json:"timeout,omitempty"`
 }
 
 func (h healthCheckSettings) Build() (proto.Message, error) {

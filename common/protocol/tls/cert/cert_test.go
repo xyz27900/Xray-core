@@ -59,8 +59,8 @@ func generate(domainNames []string, isCA bool, jsonOutput bool, fileOutput strin
 }
 
 type jsonCert struct {
-	Certificate []string `json:"certificate"`
-	Key         []string `json:"key"`
+	Certificate []string `json:"certificate,omitempty"`
+	Key         []string `json:"key,omitempty"`
 }
 
 func printJSON(certificate *Certificate) {
