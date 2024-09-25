@@ -2,6 +2,7 @@ package conf
 
 import (
 	"encoding/json"
+	"fmt"
 	"strconv"
 	"strings"
 
@@ -196,6 +197,28 @@ func (list *PortList) Build() *net.PortList {
 		portList.Range = append(portList.Range, r.Build())
 	}
 	return portList
+}
+
+func (list *PortList) MarshalJSON() ([]byte, error) {
+	if list == nil {
+		return json.Marshal(nil)
+	}
+
+	var ports []string
+
+	for _, portList := range list.Range {
+		var port string
+
+		if portList.From == portList.To {
+			port = fmt.Sprintf("%d", portList.From)
+		} else {
+			port = fmt.Sprintf("%d-%d", portList.From, portList.To)
+		}
+
+		ports = append(ports, port)
+	}
+
+	return json.Marshal(strings.Join(ports, ","))
 }
 
 // UnmarshalJSON implements encoding/json.Unmarshaler.UnmarshalJSON
